@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ConsumerBasket</string>
+    <string name="id_text">ID:</string>
+    <string name="id_output_text">пусто</string>
+    <string name="name_text">Наименование:</string>
+    <string name="name_output_taxt">пусто</string>
+    <string name="weight_text">Вес:</string>
+    <string name="weight_output_text">0</string>
+    <string name="kg_taxt">кг.</string>
+    <string name="price_text">Цена:</string>
+    <string name="price_output_text">0</string>
+    <string name="rub_text">руб.</string>
+    <string name="save_text">Сохранить</string>
+    <string name="title_text">Потребительская корзина</string>
+    <string name="total_amount_text">Общая сумма</string>
+    <string name="name_text_tv">Наименование</string>
+    <string name="input_name_text">Введите наименование продукта</string>
+    <string name="weight_text_tv">Вес</string>
+    <string name="input_weight_text">Введите вес, кг.</string>
+    <string name="price_text_tv">Цена</string>
+    <string name="input_price">Введите цену, руб.</string>
+    <string name="total_amount_text_tv">Общая сумма: %1$s руб.</string>
+    <string name="add_product_text">%1$s добавлен</string>
+    <string name="exit_programm_text">Выход из программы</string>
+</resources>
