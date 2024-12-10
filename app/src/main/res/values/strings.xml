@@ -22,4 +22,26 @@
     <string name="total_amount_text_tv">Общая сумма: %1$s руб.</string>
     <string name="add_product_text">%1$s добавлен</string>
     <string name="exit_programm_text">Выход из программы</string>
+    <string name="update_id_text_tv">ID:</string>
+    <string name="update_product_id_text">Ввеproductдите id</string>
+    <string name="update_name_text">Наименование:</string>
+    <string name="input_update_name_text">Введите наименование</string>
+    <string name="update_weight_text">Вес:</string>
+    <string name="update_input_weight_text">Введите вес</string>
+    <string name="update_price_text">Цена:</string>
+    <string name="update_input_price_text">Введите цену</string>
+    <string name="update_button_text">Изменить</string>
+    <string name="delete_button_text">Удалить</string>
+    <string name="update">Обновить запись</string>
+    <string name="input_data">Введите данные ниже</string>
+    <string name="update_data">Обновить</string>
+    <string name="data_updated">Данные обновлены</string>
+    <string name="cancellation">Отмена</string>
+    <string name="delete_record">Удалить запись</string>
+    <string name="enter_the_identifier">Введите индентификатор</string>
+    <string name="delete">Удалить</string>
+    <string name="record_deleted">Запись удалена</string>
+    <string name="delete_id_text_tv">ID:</string>
+    <string name="delete_id_text">Введите id</string>
+    <string name="update_id">Обновить запись (id: №%1$s)</string>
 </resources>

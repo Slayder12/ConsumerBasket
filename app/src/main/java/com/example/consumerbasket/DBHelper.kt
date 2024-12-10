@@ -71,13 +71,12 @@ class DBHelper(context: Context):
                 productWeight = cursor.getString(cursor.getColumnIndex("weight"))
                 productPrice = cursor.getString(cursor.getColumnIndex("price"))
 
-                val product = Product(productId, productName, productWeight.toDouble(), productPrice.toInt())
+                val product = Product(productId, productName, productWeight.toDoubleOrNull(), productPrice.toIntOrNull())
                 productList.add(product)
 
             } while (cursor.moveToNext())
         }
         return productList
-
     }
 
     fun updateData(product: Product){
@@ -104,6 +103,5 @@ class DBHelper(context: Context):
         val db = this.writableDatabase
         db.delete(TABLE_NAME, null, null)
     }
-
 
 }

@@ -68,7 +68,7 @@
             android:background="@drawable/widget_border"
             android:textColor="@color/black"
             android:hint="@string/input_price"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:textAlignment="center"/>
 
 
