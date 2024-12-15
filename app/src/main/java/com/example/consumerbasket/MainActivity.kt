@@ -78,6 +78,24 @@ class MainActivity : AppCompatActivity(), Removable, Updatable {
         }
     }
 
+    private fun init() {
+        toolbar = findViewById(R.id.toolbar)
+        title = ""
+        setSupportActionBar(toolbar)
+
+        listViewLV = findViewById(R.id.listViewLV)
+        nameTV = findViewById(R.id.nameET)
+        weightET = findViewById(R.id.weightET)
+        priceET = findViewById(R.id.priceET)
+
+        checkAmountTV = findViewById(R.id.checkAmountTV)
+
+        saveDataBTN = findViewById(R.id.saveDataBTN)
+        updateDataBTN = findViewById(R.id.updateDataBTN)
+        deleteDataBTN = findViewById(R.id.deleteDataBTN)
+
+    }
+
     private fun saveRecord() {
         val product = Product(
             null,
@@ -103,6 +121,7 @@ class MainActivity : AppCompatActivity(), Removable, Updatable {
         val inflater = this.layoutInflater
         val dialogView = inflater.inflate(R.layout.apdate_dialog, null)
         dialogBuilder.setView(dialogView)
+
         val editID = dialogView.findViewById<EditText>(R.id.updateIdItemET)
         val editName = dialogView.findViewById<EditText>(R.id.updateNameET)
         val editWeight = dialogView.findViewById<EditText>(R.id.updateWeightET)
@@ -112,27 +131,14 @@ class MainActivity : AppCompatActivity(), Removable, Updatable {
         dialogBuilder.setMessage(getString(R.string.input_data))
         dialogBuilder.setPositiveButton(getString(R.string.update_data)) { _, _ ->
 
-            val updateId = editID.text.toString()
-            val updateName = editName.text.toString()
-            val updateWeight = editWeight.text.toString()
-            val updatePrice = editPrice.text.toString()
-
-            val product = Product(
-                updateId.toIntOrNull(),
-                updateName,
-                updateWeight.toDoubleOrNull(),
-                updatePrice.toIntOrNull(),
-            )
+            val product = product(editID, editName, editWeight, editPrice)
 
             val data = dataBase.readData()
 
             if (CheckProductId(this, product.productId).checkId(data) &&
                 InputProductValidation(this, product).isValidate()) {
-
                 dataBase.updateData(product)
-
                 readingDatabase()
-
                 Toast.makeText(
                     this,
                     getString(R.string.data_updated), Toast.LENGTH_SHORT
@@ -145,6 +151,7 @@ class MainActivity : AppCompatActivity(), Removable, Updatable {
         }
         dialogBuilder.create().show()
     }
+
 
     private fun deleteRecord() {
         val dialogBuilder = AlertDialog.Builder(this)
@@ -178,22 +185,34 @@ class MainActivity : AppCompatActivity(), Removable, Updatable {
 
     }
 
-    private fun init() {
-        toolbar = findViewById(R.id.toolbar)
-        title = ""
-        setSupportActionBar(toolbar)
+    private fun product(
+        editID: EditText,
+        editName: EditText,
+        editWeight: EditText,
+        editPrice: EditText
+    ): Product {
+        val updateId = editID.text.toString()
+        val updateName = editName.text.toString()
+        val updateWeight = editWeight.text.toString()
+        val updatePrice = editPrice.text.toString()
 
-        listViewLV = findViewById(R.id.listViewLV)
-        nameTV = findViewById(R.id.nameET)
-        weightET = findViewById(R.id.weightET)
-        priceET = findViewById(R.id.priceET)
+        val product = createProduct(updateId, updateName, updateWeight, updatePrice)
+        return product
+    }
 
-        checkAmountTV = findViewById(R.id.checkAmountTV)
-
-        saveDataBTN = findViewById(R.id.saveDataBTN)
-        updateDataBTN = findViewById(R.id.updateDataBTN)
-        deleteDataBTN = findViewById(R.id.deleteDataBTN)
-
+    private fun createProduct(
+        updateId: String,
+        updateName: String,
+        updateWeight: String,
+        updatePrice: String
+    ): Product {
+        val product = Product(
+            updateId.toIntOrNull(),
+            updateName,
+            updateWeight.toDoubleOrNull(),
+            updatePrice.toIntOrNull(),
+        )
+        return product
     }
 
     private fun productLifeData() {
@@ -267,12 +286,7 @@ class MainActivity : AppCompatActivity(), Removable, Updatable {
             val updateWeight = editWeight.text.toString()
             val updatePrice = editPrice.text.toString()
 
-            val product = Product(
-                productId,
-                updateName,
-                updateWeight.toDoubleOrNull(),
-                updatePrice.toIntOrNull(),
-            )
+            val product = createProduct(productId.toString(), updateName, updateWeight, updatePrice)
 
             if (InputProductValidation(this, product).isValidate()) {
                 dataBase.updateData(product)
